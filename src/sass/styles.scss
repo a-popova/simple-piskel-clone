@@ -1,0 +1,365 @@
+@import "normalize.css";
+@import "keyboardModal.scss";
+
+@font-face {
+    font-family: "Roboto";
+    src: url('../fonts/Roboto/Roboto-Regular.ttf') format("woff2");
+}
+@mixin Roboto {
+    font-family: "Roboto";
+    font-size: 16px;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    background: #1D1D1D;
+    color: white;
+}
+
+.wrapper {
+    box-sizing: border-box;
+}
+
+.header {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    box-shadow: 1px 3px 3px gray;
+    & .logo {
+        margin-left: 2%;
+        h3 {
+            color: white;
+        }
+    }
+}
+
+.main {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.column {
+    margin-top: 10px;
+    &.panel {
+        width: 20%;
+        display: flex;
+    }
+    &.canvas {
+        width: 60%;
+        background-color: #CCC;
+        margin: 10px;
+    }
+    &.preview {
+        width: 20%;
+    }
+}
+
+.column .panel {
+    &--frames {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        & .frames {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            & .item {
+                position: relative;
+                button {
+                    &[name=delete] {
+                        position: absolute;
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 50%;
+                        top: 6%;
+                        right: 3%;
+                        background-color: gold;
+                        color: #1D1D1D;
+                        border: none;
+                        font-size: 20px;
+                    }
+                    &[name=duplicate] {
+                        position: absolute;
+                        bottom: 4%;
+                        right: 4%;
+                        background-color: gold;
+                        color: #1D1D1D;
+                        width: 50px;
+                        height: 40px;
+                        border: none;
+                    }
+                    &:hover {
+                        border: 2px solid #1D1D1D;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+        & input[class=add] {
+            width: 30px;
+            height: 30px;
+            margin-top: 5%;
+            background-color: gold;
+            border: none;
+            border-radius: 50%;
+            color: #1D1D1D;
+            font-size: 20px;
+            font-weight: bold;
+            &:hover {
+                border: 1px solid #1D1D1D;
+                cursor: pointer;
+            }
+        }
+        & .frame {
+            width: 150px;
+            height: 150px;
+            image-rendering: pixelated;
+            border: 3px solid #aa6c39;
+            margin-top: 3%;
+            background-color: white;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+        & .frame.active {
+            border: 3px solid gold;
+        }
+    }
+
+    &--tools {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        & .tools {
+            margin-top: 150px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            & .string {
+                width: 46px;
+                height: 46px;
+                @include Roboto();
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-start;
+                background-color: gold;
+                margin: 5px;
+                &:hover {
+                    cursor: pointer;
+                    background-color: #B6D5F8;
+                }
+                & img {
+                    margin: 0 auto;
+                }
+            }
+            #eraser img {
+                width: 60%;
+                height: 60%;
+            }
+            #stroke img {
+                width: 60%;
+                height: 60%;
+            }
+        }
+        & .colors {
+            margin: 10%;
+            position: relative;
+            & .string {
+                width: 75px;
+                height: 75px;
+                margin: 5px;
+                &:hover {
+                    cursor: pointer;
+                    border: 2px solid gold;
+                }
+            }
+            & .currentColor {
+                background-color: black;
+            }
+            & .prevColor {
+                position: absolute;
+                top: 60%;
+                right: 0;
+                background-color: white;
+            }
+            &--input {
+                display: flex;
+                position: absolute;
+                top: 5%;
+                left: 80%;
+                & input {
+                    width: 60px;
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+                & label {
+                    @include Roboto();
+                    font-size: 14px;
+                    margin-left: 10px;
+                    &:hover {
+                        font-weight: bold;
+                    }
+                }
+            }
+            &--input.hide {
+                display: none;
+            }
+        }
+    }
+}
+
+.column.preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    #preview {
+        width: 200px;
+        height: 200px;
+        image-rendering: pixelated;
+        background-color: white;
+        border: 1px solid gold;
+    }
+    .canvasContainer {
+        position: relative;
+        button[name=full] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            &:hover {
+                cursor: pointer;
+                border: 1px solid gold;
+            }
+        }
+    }
+    .keyboard {
+        margin-right: 15%;
+        align-self: flex-end;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.canvas {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    & img {
+        overflow: hidden;
+    }
+    &--field {
+        width: 512px;
+        height: 512px;
+        margin: 0 auto;
+    }
+
+    #canvas {
+        width: 512px;
+        height: 512px;
+        image-rendering: pixelated;
+        border: 3px solid gold;
+        background-color: white;
+        &:hover {
+            cursor: pointer;
+            //cursor: url('../images/pencil.png'), auto;
+        }
+    }
+
+    &--switcher {
+        height: 40px;
+        margin-top: 20px;
+        border: 1px solid gray;
+        box-shadow: 1px 5px 5px gray;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        & input[type=submit]{
+            width: 120px;
+            &:hover {
+                cursor: pointer;
+                background-color: #B6D5F8;
+            }
+        }
+    }   
+}
+
+.slidecontainer {
+    width: 100%;
+    margin: 5% 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    & img {
+        background-color: gold;
+        margin: 0 5px;
+    }
+}
+  
+.slider {
+    -webkit-appearance: none; 
+    appearance: none;
+    width: 60%;
+    height: 15px;
+    background: #cccccc;
+    outline: none; 
+    opacity: 0.7; 
+    -webkit-transition: .2s; 
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 30px; 
+    border-radius: 50%;
+    background: gold;
+    cursor: pointer; 
+}
+  
+.slider::-moz-range-thumb {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: gold;
+    cursor: pointer;
+ }
+
+#pencil.isSelected {
+    background-color: #86BAF4;
+}
+#chooseColor.isSelected {
+    background-color: #86BAF4;
+}
+#fillBucket.isSelected {
+    background-color: #86BAF4;
+}
+
+#eraser.isSelected {
+    background-color: #86BAF4;
+}
+
+#stroke.isSelected {
+    background-color: #86BAF4;
+}
+
+.isSelected {
+    background-color: #86BAF4;
+}
