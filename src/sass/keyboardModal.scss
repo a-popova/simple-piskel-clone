@@ -57,7 +57,7 @@
   li {
     list-style: none;
     line-height: 50px;
-    span:hover {
+    span:nth-child(2):hover {
       cursor: pointer;
       color: gold;
     }

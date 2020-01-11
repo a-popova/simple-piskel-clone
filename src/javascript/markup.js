@@ -88,28 +88,28 @@ const markup = `<header class="header">
             <ul>
               <li>
                 <div class="shortcut pencil"></div>
-                <span class="shortcut key">P</span>
-                <span>Pencil tool</span>
+                <span class="shortcut key pencil" data-code="KeyP">P</span>
+                <span class="pencil">Pencil tool</span>
               </li>
               <li>
                 <div class="shortcut bucket"></div>
-                <span class="shortcut key">B</span>
-                <span>Paint bucket tool</span>
+                <span class="shortcut key paintBucket" data-code="KeyB">B</span>
+                <span class="paintBucket">Paint bucket tool</span>
               </li>
               <li>
                 <div class="shortcut eraser"></div>
-                <span class="shortcut key">E</span>
-                <span>Eraser tool</span>
+                <span class="shortcut key eraser" data-code="KeyE">E</span>
+                <span class="eraser">Eraser tool</span>
               </li>
               <li>
                 <div class="shortcut stroke"></div>
-                <span class="shortcut key">S</span>
-                <span>Stroke tool</span>
+                <span class="shortcut key stroke" data-code="KeyS">S</span>
+                <span class="stroke">Stroke tool</span>
               </li>
               <li>
                 <div class="shortcut colorPicker"></div>
-                <span class="shortcut key">C</span>
-                <span>Color picker tool</span>
+                <span class="shortcut key colorPicker" data-code="KeyC">C</span>
+                <span class="colorPicker">Color picker tool</span>
               </li>
             </ul>
           </div>
@@ -118,18 +118,18 @@ const markup = `<header class="header">
             <ul>
             <li>
               <div class="shortcut colorPicker"></div>
-              <span class="shortcut key">Shift + C</span>
-              <span>Create frame</span>
+              <span class="shortcut key addFrame">Shift + C</span>
+              <span class="addFrame">Create frame</span>
             </li>
             <li>
               <div class="shortcut colorPicker"></div>
-              <span class="shortcut key">Shift + D</span>
-              <span>Delete frame</span>
+              <span class="shortcut key deleteFrame">Shift + D</span>
+              <span class="deleteFrame">Delete frame</span>
             </li>
             <li>
               <div class="shortcut colorPicker"></div>
-              <span class="shortcut key">Shift + F</span>
-              <span>Duplicate frame</span>
+              <span class="shortcut key duplicateFrame">Shift + F</span>
+              <span class="duplicateFrame">Duplicate frame</span>
             </li>
             </ul>
           </div>
